@@ -1,8 +1,15 @@
-# React + Vite
+#Blood Donation System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+#Introduction
+Welcome to our Blood Donation System, a platform designed to facilitate blood donation and save lives. 
 
-Currently, two official plugins are available:
+#Features
+1.User Registration: Users can register to become blood donors by providing their details.
+2.Blood Donation Events: Information about upcoming blood donation events.
+3.Blood Request: Allows individuals or hospitals to request blood donations.
+4.Donor Matching: Matches blood donors with compatible recipients based on blood type and location.
+5.Donor Profiles: Profiles of registered blood donors with contact information.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Authors:
+Muhammad Sulaiman - www.linkedin.com/in/m-sulaiman-khan-72610823b
+Muhammad Zaryab - 
