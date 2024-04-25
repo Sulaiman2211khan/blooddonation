@@ -2,30 +2,31 @@
 
 import React from 'react'
 import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 const menuItems = [
   {
     name: 'Home',
-    href: '#',
-  },
-  {
-    name: 'Plasma',
-    href: '#',
+    href: '',
   },
   {
     name: 'Why Give Blood',
-    href: '#',
+    href: '/whygiveblood',
   },
   {
     name: 'The Donation Process',
     href: '#',
   }, {
-    name: 'Where to Donate',
-    href: '#',
+    name: 'Donate Now',
+    href: '/location',
   },
   , {
     name: 'About Us',
-    href: '#',
+    href: '/about',
+  },
+  , {
+    name: 'Contact',
+    href: '/contact',
   },
 ]
 
@@ -38,7 +39,7 @@ export default function ExampleNavbarThree() {
 
   return (
     <div>
-    <div className='relative py-3 border shadow-md shadow-black   flex items-center justify-between px-10 '>
+    <div className='relative py-3  shadow-md shadow-black   flex items-center justify-between px-10 '>
        <div className='flex items-center '>
         <div className='text-xl text-red-600 font-bold mx-4'>Give blood</div>
         <div>
@@ -66,21 +67,21 @@ export default function ExampleNavbarThree() {
     </div>
        </div>
     </div>
-      <div className=" relative border    w-[100%] bg-white">
+      <div className=" relative     w-[100%] bg-white">
       <div className="mx-auto   flex h-full  items-center justify-between px-4 ">
         <div className="hidden   w-[100vw] h-full grow items-start    sm:flex">
           <ul className="flex items-center h-full justify-center w-full ">
             {menuItems.map((item) => (
               <li className=' w-[190px]   h-full text-center text-nowrap  hover:bg-red-600 hover:text-white -black  py-4' key={item.name}>
-                <a
-                  href={item.href}
+                <Link
+                  to={item.href}
                   className="inline-flex items-center text-sm font-semibold "
                 >
                   {item.name}
                   <span>
-                    <ChevronDown className="ml-2 h-4 w-4" />
+                 
                   </span>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
