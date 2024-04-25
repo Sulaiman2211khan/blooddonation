@@ -1,14 +1,16 @@
 // App.jsx
 import React from 'react';
-import  ExampleNavbarThree  from './Components/Home';
+import Header  from './Components/Header';
 import Footer from './Components/Footer';
-import Donor from './Components/Donor';
+import {Outlet} from "react-router-dom"
+
 
 function App() {
   return (
     <>
-      <ExampleNavbarThree />
-      <Donor />
+
+      <Header />
+      <Outlet/>
       <Footer />
     </>
   );
