@@ -6,7 +6,7 @@ const menuItems = [
   { name: 'Home', href: '' },
   { name: 'Why Give Blood', href: '/whygiveblood' },
   { name: 'The Donation Process', href: '#' },
-  { name: 'Donate Now', href: '/location' },
+  { name: 'Donate Now', href: '/donate' },
   { name: 'About Us', href: '/about' },
   { name: 'Contact', href: '/contact' },
 ];
@@ -38,12 +38,12 @@ export default function ExampleNavbarThree() {
             >
               Sign Up
             </Link>
-            <button
-              type="button"
+            <Link
+              to="/login"
               className="rounded-md px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
             >
               Log In
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -121,12 +121,12 @@ export default function ExampleNavbarThree() {
                     >
                       Sign Up
                     </Link>
-                    <button
-                      type="button"
-                      className="w-full rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                    <Link
+                    to="/login"
+                    className="w-full rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                     >
                       Log In
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>

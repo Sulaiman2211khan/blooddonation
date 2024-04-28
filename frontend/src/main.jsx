@@ -5,11 +5,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from "./Components/HomePage.jsx"
 import About from "./Components/About.jsx"
 import Contact from "./Components/Contact.jsx"
-import Location from "./Components/Location.jsx"
-import Login from "./Components/Login.jsx"
+import Donate from "./Components/Donate.jsx"
 import AdminPage from "./Components/AdminPage.jsx"
 import Whygiveblood from './Components/Whygiveblood.jsx';
-import Signup from './Components/Signup'; 
+import Login from "./Components/Login.jsx"
+import Signup from './Components/Signup.jsx'; 
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -21,10 +21,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="whygiveblood" element={<Whygiveblood />} />
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
-          <Route path="location" element={<Location />} />
+          <Route path="donate" element={<Donate />} />
         </Route>
         <Route path="/signup" element={<Signup />} /> 
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login />} /> 
         <Route path="/admin" element={<AdminPage />} />
       </Routes>
     </Router>
