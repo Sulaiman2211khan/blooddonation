@@ -3,10 +3,10 @@ import React from 'react'
 const Contact = () => {
   return (
    <>
-    <div className="mx-auto max-w-[1920px] px-4 md:px-8 2xl:px-16 bg-slate-200 pt-4 pb-4">
-      <div className="md:w-full lg:w-3/5 2xl:w-4/6 flex h-full ltr:md:ml-7 rtl:md:mr-7 flex-col ltr:lg:pl-7 rtl:lg:pr-7">
-        <div className="flex pb-7 md:pb-9 mt-7 md:-mt-1.5">
-          <h4 className="text-2xl 2xl:text-3xl font-bold text-heading">
+   <div className="mx-auto max-w-[1920px] px-4 md:px-8 2xl:px-16 bg-slate-200 pt-4 pb-4 flex items-center justify-center min-h-screen">
+      <div className="md:w-full lg:w-3/5 2xl:w-4/6 flex flex-col">
+        <div className="pb-7 md:pb-9 mt-7 md:-mt-1.5">
+          <h4 className="text-2xl 2xl:text-3xl font-bold text-heading text-center">
             Get in touch
           </h4>
         </div>

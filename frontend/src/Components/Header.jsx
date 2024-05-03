@@ -1,18 +1,19 @@
 import React from 'react';
 import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link,useLocation } from 'react-router-dom';
 
 const menuItems = [
   { name: 'Home', href: '' },
   { name: 'Why Give Blood', href: '/whygiveblood' },
-  { name: 'The Donation Process', href: '#' },
+  { name: 'The Donation Process', href: '/thedonationprocess' },
   { name: 'Donate Now', href: '/donate' },
   { name: 'About Us', href: '/about' },
-  { name: 'Contact', href: '/contact' },
+  { name: 'Contact Us', href: '/contact' },
 ];
 
 export default function ExampleNavbarThree() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const location = useLocation();
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -52,15 +53,15 @@ export default function ExampleNavbarThree() {
           <div className="hidden w-[100vw] h-full grow items-start sm:flex">
             <ul className="flex items-center h-full justify-center w-full">
               {menuItems.map((item) => (
-                <li className='w-[190px] h-full text-center text-nowrap hover:bg-red-600 hover:text-white -black py-4 cursor-pointer' key={item.name}>
-                  <Link
-                    to={item.href}
-                    className="inline-flex items-center text-sm font-semibold"
-                  >
+                <Link
+                  to={item.href}
+                  className={`inline-flex items-center text-sm font-semibold ${location.pathname === item.href ? 'bg-red-600 text-white' : ''}`}
+
+                
+                >  <li className='w-[190px] h-full text-center text-nowrap hover:bg-red-600 hover:text-white -black py-4 cursor-pointer' key={item.name}>
                     {item.name}
                     <span></span>
-                  </Link>
-                </li>
+                  </li></Link>
               ))}
             </ul>
           </div>
@@ -96,7 +97,7 @@ export default function ExampleNavbarThree() {
                       </button>
                     </div>
                   </div>
-                  <div className="mt-6">
+                  <div className="mt-4">
                     <nav className="grid gap-y-4">
                       {menuItems.map((item) => (
                         <a
@@ -122,8 +123,8 @@ export default function ExampleNavbarThree() {
                       Sign Up
                     </Link>
                     <Link
-                    to="/login"
-                    className="w-full rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                      to="/login"
+                      className="w-full rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                     >
                       Log In
                     </Link>
