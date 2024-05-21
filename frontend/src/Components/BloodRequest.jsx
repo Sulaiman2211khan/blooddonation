@@ -67,7 +67,6 @@ const BloodRequest = () => {
             <option value="no">No</option>
           </select>
         </div>
-     
       
         <div>
           <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md">Submit</button>
