@@ -50,6 +50,10 @@ const BloodRequest = () => {
             <option value="O-">O-</option>
           </select>
         </div>
+          <div>
+          <label htmlFor="blood-packet" className="block font-medium">Blood Packet Quantity:</label>
+          <input type="number" id="blood-packet" className="border border-gray-300 rounded-md px-3 py-2 w-full" />
+        </div>
         <div>
           <label htmlFor="critical-need" className="block font-medium">Critical Need:</label>
           <select id="critical-need" className="border border-gray-300 rounded-md px-3 py-2 w-full">
@@ -68,6 +72,7 @@ const BloodRequest = () => {
           </select>
         </div>
       
+
         <div>
           <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md">Submit</button>
         </div>
