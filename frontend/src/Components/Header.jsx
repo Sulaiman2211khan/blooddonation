@@ -7,6 +7,7 @@ const menuItems = [
   { name: 'Why Give Blood', href: '/whygiveblood' },
   { name: 'The Donation Process', href: '/thedonationprocess' },
   { name: 'Donate Now', href: '/donate' },
+  { name: 'Blood Request', href: '/bloodrequest' },
   { name: 'About Us', href: '/about' },
   { name: 'Contact Us', href: '/contact' },
 ];
@@ -58,7 +59,7 @@ export default function ExampleNavbarThree() {
                   className={`inline-flex items-center text-sm font-semibold ${location.pathname === item.href ? 'bg-red-600 text-white' : ''}`}
 
                 
-                >  <li className='w-[190px] h-full text-center text-nowrap hover:bg-red-600 hover:text-white -black py-4 cursor-pointer' key={item.name}>
+                >  <li className='w-[190px] h-full text-center text-nowrap  hover:bg-red-600 hover:text-white -black py-4 cursor-pointer' key={item.name}>
                     {item.name}
                     <span></span>
                   </li></Link>

@@ -10,6 +10,7 @@ import AdminPage from "./Components/AdminPage.jsx"
 import Whygiveblood from './Components/Whygiveblood.jsx';
 import Thedonationprocess from './Components/Thedonationprocess.jsx';
 import Login from "./Components/Login.jsx"
+import BloodRequest from "./Components/BloodRequest.jsx"
 import Signup from './Components/Signup.jsx'; 
 
 
@@ -22,8 +23,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="whygiveblood" element={<Whygiveblood />} />
           <Route path="thedonationprocess" element={<Thedonationprocess />} />
           <Route path="donate" element={<Donate />} />
+          <Route path="bloodrequest" element={<BloodRequest />} />
           <Route path="about" element={<About />} />
-          <Route path="contact" element={<Contact />} />
+          <Route path="contact" element={<Contact />} />BloodRequest
         </Route>
         <Route path="/signup" element={<Signup />} /> 
         <Route path="/login" element={<Login />} /> 

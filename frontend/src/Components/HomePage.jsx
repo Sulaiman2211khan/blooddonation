@@ -22,6 +22,18 @@ function HomePage() {
                 </div>
             </div>
 
+            <div className="flex justify-center mt-3 mb-8">
+              <iframe
+                width="900"
+                height="400"
+                src={`https://www.youtube.com/embed/YOUR_VIDEO_ID_HERE?autoplay=1&mute=1`}
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-[80%]  md:max-w-screen-lg mx-auto mt-8">
                 
                 <div className="bg-gray-100 p-4 rounded-lg col-span-3 md:col-span-1 mb-5 flex  flex-col transition duration-300 ease-in-out transform hover:bg-gray-300 hover:text-black cursor-pointer">

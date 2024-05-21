@@ -10,8 +10,8 @@ export default function WhyGiveBlood() {
 
     return (
       <>
-        <div className="min-h-screen border border-black  ">
-          <div className="max-w-7xl mx-auto px-4 shadow-lg shadow-cyan-500/100 p-4 border border-black">
+        <div className="min-h-screen border  ">
+          <div className="max-w-7xl mx-auto px-4 shadow-lg shadow-cyan-500/100 p-4 border">
             <h1 className="text-4xl font-semibold mb-4 ">Why Give Blood</h1>
             <p className="text-lg mb-8 p-3">
               Giving blood saves lives. <br />
@@ -32,6 +32,18 @@ export default function WhyGiveBlood() {
               <li>12,000 new Black heritage donors, to meet the growing demand for ethnically matched blood for sickle cell patients who need regular transfusions to stay alive</li>
               <li>More young people aged 17-35 to donate, to ensure we have enough blood for the future</li>
             </ul>
+
+            <div className="flex justify-center mb-8">
+              <iframe
+                width="800"
+                height="400"
+                src={`https://www.youtube.com/embed/YOUR_VIDEO_ID_HERE?autoplay=1&mute=1`}
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
             <div className="grid grid-cols-2 gap-8 mb-8">
               <div className="p-4 shadow-md bg-gray-200 hover:scale-105 transform transition duration-300 cursor-pointer">
                 <img src="https://media.istockphoto.com/id/1338750217/photo/nurse-preparing-patient-to-do-a-blood-analysis.jpg?s=612x612&w=0&k=20&c=HhqYNGE4GhNVegUysfyWjce08QO_fS3t0lqeCnn54cM=" alt="Emergency" className="w-50 mb-2" />
@@ -60,14 +72,14 @@ export default function WhyGiveBlood() {
           </div>
 
           {/* FAQs Section*/}
-          
-            <div className=" max-w-7xl mx-auto lg:text-center mt-10 p-5">
-              <h2 className="text-3xl font-semibold leading-tight text-black sm:text-4xl lg:text-5xl">
-                Frequently Asked Questions
-              </h2>
-              <p className="mt-4 max-w-xl text-base leading-relaxed text-gray-600 lg:mx-auto">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere, assumenda
-              </p>
+
+          <div className=" max-w-7xl mx-auto lg:text-center mt-10 p-5">
+            <h2 className="text-3xl font-semibold leading-tight text-black sm:text-4xl lg:text-5xl">
+              Frequently Asked Questions
+            </h2>
+            <p className="mt-4 max-w-xl text-base leading-relaxed text-gray-600 lg:mx-auto">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere, assumenda
+            </p>
             <div className="mx-auto mt-8 max-w-3xl space-y-4 md:mt-16">
               <div className="cursor-pointer rounded-md border border-gray-400 shadow-lg ">
                 <button
@@ -81,7 +93,7 @@ export default function WhyGiveBlood() {
                 {openIndex === 0 && (
                   <div className="px-4 pb-5 sm:px-6 sm:pb-6">
                     <p className="text-gray-500">
-                    To get started with blood donation, you can visit your local blood donation center or blood drive. They will guide you through the process and provide you with all the necessary information.
+                      To get started with blood donation, you can visit your local blood donation center or blood drive. They will guide you through the process and provide you with all the necessary information.
 
                     </p>
                   </div>
@@ -120,7 +132,7 @@ export default function WhyGiveBlood() {
               </a>
             </p>
           </div>
-          </div>
+        </div>
 
       </>
     );

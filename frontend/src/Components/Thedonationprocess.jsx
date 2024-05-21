@@ -2,7 +2,7 @@ import React from 'react';
 
 const Thedonationprocess = () => {
     return (
-        <div className="max-w-7xl mx-auto shadow-lg shadow-cyan-500/100  border border-black">
+        <div className="max-w-7xl mx-auto shadow-lg shadow-cyan-500/100  mb-2">
             <div className=" p-6 ">
                 <h1 className="text-3xl font-semibold mb-4">The Donation Process</h1>
                 <p className="text-lg mb-4">
