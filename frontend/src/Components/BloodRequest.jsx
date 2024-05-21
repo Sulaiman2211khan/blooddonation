@@ -67,6 +67,12 @@ const BloodRequest = () => {
             <option value="no">No</option>
           </select>
         </div>
+
+        <div>
+  <label htmlFor="blood-packet" className="block font-medium">Blood Packet Quantity:</label>
+  <input type="number" id="blood-packet" className="border border-gray-300 rounded-md px-3 py-2 w-full" />
+</div>
+
      
       
         <div>
