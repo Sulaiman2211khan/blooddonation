@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-
-
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import axios from "axios"
 const statesAndCities = {
   Punjab: ["Lahore", "Faisalabad", "Rawalpindi", "Gujranwala", "Multan"],
   Sindh: ["Karachi", "Hyderabad", "Sukkur", "Larkana", "Mirpur Khas"],
@@ -12,8 +13,18 @@ const statesAndCities = {
 };
 
 const Donate = () => {
+  const navigate = useNavigate();
+
+  const handleregister = (e) => {
+    e.preventDefault();
+    navigate("/login");
+  };
+  
+  const user = useSelector(store => store.user);
+
+  console.log(user);
+
   const [formData, setFormData] = useState({
-    fullName: '',
     gender: '',
     dob: '',
     bloodGroup: '',
@@ -26,13 +37,9 @@ const Donate = () => {
     donationDate: '', // Add donationDate field
   });
 
-
   const [cities, setCities] = useState([]);
   const [submitted, setSubmitted] = useState(false);
   const [hospitalsData, setHospitalsData] = useState([]);
-
-
-  const [hospitalRecommendation, setHospitalRecommendation] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -42,7 +49,6 @@ const Donate = () => {
     });
   };
 
-
   useEffect(() => {
     if (formData.state) {
       setCities(statesAndCities[formData.state] || []);
@@ -51,46 +57,41 @@ const Donate = () => {
     }
   }, [formData.state]);
 
-  useEffect(() => {
-    if (formData.city && formData.state) {
-      const getHospitalRecommendation = (city, state) => {
-        return `Recommended hospital in ${city}, ${state}.`;
-      };
-      const recommendation = getHospitalRecommendation(formData.city, formData.state);
-      setHospitalRecommendation(recommendation);
-    } else {
-      setHospitalRecommendation('');
-    }
-  }, [formData.city, formData.state]);
+    
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitted(true);
     console.log(formData);
+    const response = await axios.post('http://localhost:3000/api/donate/donar', {formData,user});
+    console.log(response.data); // Assuming the backend responds with a message
+    if (response.data.success) {
+      setFormData({
+        gender: '',
+        dob: '',
+        bloodGroup: '',
+        lastDonation: '',
+        address: '',
+        phoneNo: '',
+        city: '',
+        state: '',
+        medicalIllness: '',
+        donationDate: '',
+      });
 
-    // Fetch hospitals data based on the selected city
-    const cityHospitals = hospitals[formData.city] || [];
-    setHospitalsData(cityHospitals);
+      // Fetch hospitals data based on the selected city
+      const cityHospitals = hospitals[formData.city] || [];
+      setHospitalsData(cityHospitals);
+    }
   };
 
 
   return (
     <>
-      <div className="max-w-md mx-auto bg-white shadow-md rounded-lg p-6 mt-10 mb-2">
+     { user ? <div className="max-w-md mx-auto bg-white shadow-md rounded-lg p-6 mt-10 mb-2">
         <h2 className="text-2xl font-bold mb-6 text-center">Donor Registration</h2>
         <p className="text-red-500 mb-4">All fields must be filled.</p>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">Full Name:</label>
-            <input
-              type="text"
-              name="fullName"
-              value={formData.fullName}
-              onChange={handleChange}
-              required
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            />
-          </div>
+        <form onSubmit={handleSubmit} method="POST">
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">Blood Group:</label>
             <select
@@ -228,11 +229,6 @@ const Donate = () => {
               ))}
             </select>
           </div>
-          {hospitalRecommendation && (
-            <div className="mb-4 p-4 bg-blue-100 text-blue-700 rounded">
-              {hospitalRecommendation}
-            </div>
-          )}
           <div className="flex items-center justify-between">
             <button
               type="submit"
@@ -243,23 +239,13 @@ const Donate = () => {
           </div>
         </form>
 
-        {submitted && (
-          <div>
-            <h2 className="text-2xl font-bold mb-4">Hospitals in {formData.city}</h2>
-            <MapContainer center={[formData.lat, formData.lon]} zoom={12} style={{ height: "400px", width: "100%" }}>
-              <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-              {hospitalsData.map((hospital, index) => (
-                <Marker key={index} position={[hospital.lat, hospital.lon]}>
-                  <Popup>{hospital.name}</Popup>
-                </Marker>
-              ))}
-            </MapContainer>
-          </div>
-        )}
-
-      </div>
+      </div> : (<div>
+        Please Register your self
+        <button className="border rounded-lg bg-gray-500 px-4 py-3" onClick={handleregister}>Register</button>
+      </div>)
+      }
     </>
-  );
+  )
 };
 
 export default Donate;
