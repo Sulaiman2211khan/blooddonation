@@ -12,8 +12,8 @@ import {
     PURGE,
     REGISTER,
   } from 'redux-persist'
-  import storage from 'redux-persist/lib/storage'
 
+import storage from 'redux-persist/lib/storage'
 
 const persistConfig = {
     key: 'root',
@@ -24,6 +24,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
     user:userSlice
 })
+
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 const store = configureStore({

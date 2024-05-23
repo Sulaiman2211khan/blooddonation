@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios"
+
 const statesAndCities = {
   Punjab: ["Lahore", "Faisalabad", "Rawalpindi", "Gujranwala", "Multan"],
   Sindh: ["Karachi", "Hyderabad", "Sukkur", "Larkana", "Mirpur Khas"],
@@ -58,7 +58,6 @@ const Donate = () => {
   }, [formData.state]);
 
     
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitted(true);
@@ -90,7 +89,7 @@ const Donate = () => {
     <>
      { user ? <div className="max-w-md mx-auto bg-white shadow-md rounded-lg p-6 mt-10 mb-2">
         <h2 className="text-2xl font-bold mb-6 text-center">Donor Registration</h2>
-        <p className="text-red-500 mb-4">All fields must be filled.</p>
+        <p className="text-green-600 mb-4">All fields must be filled.</p>
         <form onSubmit={handleSubmit} method="POST">
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">Blood Group:</label>

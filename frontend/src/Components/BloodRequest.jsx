@@ -4,7 +4,7 @@ const BloodRequest = () => {
   return (
     <div className="max-w-md mx-auto bg-white shadow-md rounded-lg p-6 mt-10 mb-2">
       <h2 className="text-2xl font-bold mb-6 text-center">Blood Recipient</h2>
-      <p className="text-red-500 mb-4">All fields must be filled.</p>
+      <p className="text-green-600 mb-4">All fields must be filled.</p>
       <form className="space-y-4">
         <div>
           <label htmlFor="full-name" className="block font-medium">Full Name:</label>
