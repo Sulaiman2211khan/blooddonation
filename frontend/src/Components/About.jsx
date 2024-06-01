@@ -16,7 +16,7 @@ const About = () => {
                 <p class="text-base text-gray-700">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque it.</p>
                 <div class="mt-10 flex flex-col items-center md:flex-row">
                   <a href="/" class="mb-3 inline-flex h-12 w-full items-center justify-center rounded bg-green-600 px-6 font-medium tracking-wide text-white shadow-md transition hover:bg-blue-800 focus:outline-none md:mr-4 md:mb-0 md:w-auto">View More</a>
-                  <a href="/" aria-label="" class="group inline-flex items-center font-semibold text-g1">Watch how
+                  <a href="/thedonationprocess" aria-label="" class="group inline-flex items-center font-semibold text-g1">Watch how
                     it works
                     <svg xmlns="http://www.w3.org/2000/svg" class="ml-4 h-6 w-6 transition-transform group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>

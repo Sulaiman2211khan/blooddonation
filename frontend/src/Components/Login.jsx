@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { ArrowRight } from 'lucide-react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { getUser } from './redux/userSlice.js';
@@ -11,7 +10,6 @@ const Login = () => {
   const [useremail, setuseremail] = useState('');
   const [password, setpassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const [snackbarOpen, setSnackbarOpen] = useState(false); // Add snackbarOpen state
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -29,7 +27,6 @@ const Login = () => {
         }
       } catch (error) {
         console.error('Error logging in:', error);
-        setSnackbarOpen(true); // Open snackbar on login error
       } finally {
         setLoading(false);
       }
@@ -38,16 +35,13 @@ const Login = () => {
     }
   };
 
-  const handleCloseSnackbar = () => {
-    setSnackbarOpen(false); // Close snackbar
-  };
 
   return (
     <section>
       <div className="grid grid-cols-1 lg:grid-cols-2">
         <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
           <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
-            <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl">User Sign Page</h2>
+            <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl">Login </h2>
             <p className="mt-2 text-sm text-gray-600">
               <a
                 href="#"
@@ -95,7 +89,7 @@ const Login = () => {
                     type="button"
                     className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
                   >
-                    {loading ? 'Logging in...z' : 'Login'} <ArrowRight className="ml-2" size={16} />
+                    {loading ? 'Logging in...' : 'Login'} 
                   </button>
                 </div>
               </div>

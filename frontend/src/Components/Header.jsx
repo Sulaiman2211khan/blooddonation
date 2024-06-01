@@ -2,6 +2,7 @@ import React from 'react';
 import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
 import { Link,useLocation } from 'react-router-dom';
 
+
 const menuItems = [
   { name: 'Home', href: '' },
   { name: 'Why Give Blood', href: '/whygiveblood' },
@@ -42,7 +43,7 @@ export default function ExampleNavbarThree() {
             </Link>
             <Link
               to="/login"
-              className="rounded-md px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+              className="rounded-md px-3 py-2 text-sm font-semibold text-black  hover:bg-black/10 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
             >
               Log In
             </Link>

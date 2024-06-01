@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronUp, ChevronDown } from 'lucide-react';
+import Donate from './Donate';
 
 export default function WhyGiveBlood() {
   const Thedonationprocess = () => {
@@ -66,7 +67,14 @@ export default function WhyGiveBlood() {
                 <img src="https://media.istockphoto.com/id/1338750217/photo/nurse-preparing-patient-to-do-a-blood-analysis.jpg?s=612x612&w=0&k=20&c=HhqYNGE4GhNVegUysfyWjce08QO_fS3t0lqeCnn54cM=" alt="Future" className="w-50 mb-2" />
                 <h2 className="text-2xl font-semibold mb-2 text-white">Become a Blood Donor</h2>
                 <p className="text-white pb-3">Encouraging young people to donate ensures a sustainable blood supply for the future.</p>
-                <button className="border border-white text-white px-4 py-2 shadow-md hover:bg-white hover:text-black">Sign Up to Donate</button>
+                <a href="./donate">
+                <button
+                  className="border border-white text-white px-4 py-2 shadow-md hover:bg-white hover:text-black"
+                 href="./donate"
+                >
+                  Sign Up to Donate
+                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -127,7 +135,7 @@ export default function WhyGiveBlood() {
             </div>
             <p className="textbase mt-6 text-center text-gray-600">
               Can&apos;t find what you&apos;re looking for?{' '}
-              <a href="#" title="" className="font-semibold text-black hover:underline">
+              <a href="/contact" title="" className="font-semibold text-black hover:underline">
                 Contact our support
               </a>
             </p>

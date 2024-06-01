@@ -1,5 +1,6 @@
 import React from 'react';
-import '../App.css';
+// import '../App.css';
+import Signup from "./Signup";
 
 function HomePage() {
     return (
@@ -17,12 +18,14 @@ function HomePage() {
                         <p className="text-stone-100 text-base">
                             Your blood donation can help patients in need and make a significant impact on their lives. Join us today.
                         </p>
-                        <button className="mt-8 text-white uppercase p-4 text-base font-dark border border-white hover:bg-white hover:text-black">Sign Up Now</button>
+                        <a href="./signup">
+                        <button className="mt-6 text-white uppercase p-4 text-base font-dark border border-white hover:bg-white hover:text-black">Sign Up Now</button>
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <div className="flex justify-center mt-3 mb-8">
+            <div className="flex justify-center mb-8 mt-2">
               <iframe
                 width="900"
                 height="400"

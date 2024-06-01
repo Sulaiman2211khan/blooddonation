@@ -87,7 +87,7 @@ const Donate = () => {
 
   return (
     <>
-     { user ? <div className="max-w-md mx-auto bg-white shadow-md rounded-lg p-6 mt-10 mb-2">
+     { user ? <div className="max-w-md mx-auto bg-white  p-6 mt-10 mb-2 shadow-lg shadow-cyan-500/100 ">
         <h2 className="text-2xl font-bold mb-6 text-center">Donor Registration</h2>
         <p className="text-green-600 mb-4">All fields must be filled.</p>
         <form onSubmit={handleSubmit} method="POST">
@@ -117,6 +117,7 @@ const Donate = () => {
               name="lastDonation"
               value={formData.lastDonation}
               onChange={handleChange}
+              required
               className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
             >
               <option value="">Not donated ever</option>
@@ -194,6 +195,7 @@ const Donate = () => {
               name="medicalIllness"
               value={formData.medicalIllness}
               onChange={handleChange}
+              required
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             ></textarea>
           </div>
