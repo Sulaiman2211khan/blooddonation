@@ -100,7 +100,7 @@ const Donate = () => {
               required
               className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
             >
-              <option value="">Select Blood Group</option>
+              <option selected hidden disabled value="">Select Blood Group</option>
               <option value="A+">A+</option>
               <option value="A-">A-</option>
               <option value="B+">B+</option>
@@ -120,7 +120,8 @@ const Donate = () => {
               required
               className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
             >
-              <option value="">Not donated ever</option>
+              <option selected disabled hidden value=''>Select Your Option</option>
+              <option value="not_donated_ever">Not donated ever</option>
               <option value="less_than_3_months">Less than 3 months ago</option>
               <option value="3_to_6_months">3 to 6 months ago</option>
               <option value="more_than_6_months">More than 6 months ago</option>
@@ -129,6 +130,7 @@ const Donate = () => {
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">Address:</label>
             <input
+            placeholder='Enter Your Full Address'
               type="text"
               name="address"
               value={formData.address}
@@ -142,6 +144,7 @@ const Donate = () => {
             <input
               type="text"
               name="phoneNo"
+              placeholder='Enter Your Phone/Contact Number'
               value={formData.phoneNo}
               onChange={handleChange}
               required
@@ -158,7 +161,7 @@ const Donate = () => {
               required
               className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
             >
-              <option value="">Select Gender</option>
+              <option selected disabled hidden value=''>Select Gender</option>
               <option value="male">Male</option>
               <option value="female">Female</option>
               <option value="other">Other</option>
