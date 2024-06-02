@@ -28,7 +28,6 @@ export const postDonate = async (req, res) => {
         const parsedDonationDate = new Date(donationDate);
 
       
-
         // Create a new Donar instance
         const newDonar = new Donar({
             user: user.user._id, // Using only user._id
