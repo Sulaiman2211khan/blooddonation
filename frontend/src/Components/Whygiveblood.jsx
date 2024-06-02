@@ -38,7 +38,7 @@ export default function WhyGiveBlood() {
               <iframe
                 width="800"
                 height="400"
-                src={`https://www.youtube.com/embed/YOUR_VIDEO_ID_HERE?autoplay=1&mute=1`}
+                src={`https://www.youtube.com/embed/jmhiHKsEUXU?autoplay=1&mute=1`}
                 title="YouTube video player"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -72,7 +72,7 @@ export default function WhyGiveBlood() {
                   className="border border-white text-white px-4 py-2 shadow-md hover:bg-white hover:text-black"
                  href="./donate"
                 >
-                  Sign Up to Donate
+                Donate Now
                 </button>
                 </a>
               </div>
