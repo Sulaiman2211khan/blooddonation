@@ -11,5 +11,6 @@ Welcome to our Blood Donation System, a platform designed to facilitate blood do
 5.Donor Profiles: Profiles of registered blood donors with contact information.
 
 Authors:
+Linkednin Accounts
 Muhammad Sulaiman - www.linkedin.com/in/m-sulaiman-khan-72610823b
-Muhammad Zaryab - 
+Zaryab Hussain - https://www.linkedin.com/in/zaryab-hussain-033b1923a/ 

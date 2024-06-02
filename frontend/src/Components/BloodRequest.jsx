@@ -1,21 +1,87 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const BloodRequest = () => {
+
+  const user = useSelector(store => store.user);
+
+  console.log(user)
+
+  const [formData, setFormData] = useState({
+    dateOfBirth: '',
+    gender: '',
+    phoneNumber: '',
+    fullAddress: '',
+    bloodType: '',
+    bloodPacketQuantity: '',
+    criticalNeed: '',
+    dateOfBloodRequest: '',
+    requestDurationTime: '',
+    hospitalized: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(formData);
+    const response = await axios.post('http://localhost:3000/api/request/recipient', { ...formData, user });
+
+    console.log(response.data); // Assuming the backend responds with a message
+
+    if (response.data.success) {
+      setFormData({
+        dateOfBirth: '',
+        gender: '',
+        phoneNumber: '',
+        fullAddress: '',
+        bloodType: '',
+        bloodPacketQuantity: '',
+        criticalNeed: '',
+        dateOfBloodRequest: '',
+        requestDurationTime: '',
+        hospitalized: ''
+      });
+    }
+
+  };
+
   return (
     <div className="max-w-md mx-auto bg-white p-6 mt-10 mb-2 shadow-lg shadow-cyan-500/100">
       <h2 className="text-2xl font-bold mb-6 text-center">Blood Recipient</h2>
       <p className="text-green-600 mb-4">All fields must be filled.</p>
-      <form className="space-y-4">
-
+      <form className="space-y-4" onSubmit={handleSubmit} method="POST">
         <div>
           <label htmlFor="date-of-birth" className="block text-gray-700 text-sm font-bold mb-2">Date of Birth:</label>
-          <input type="date" id="date-of-birth" required className="border border-gray-300 rounded-md px-3 py-2 w-full" />
+          <input
+            type="date"
+            id="date-of-birth"
+            name="dateOfBirth"
+            value={formData.dateOfBirth}
+            onChange={handleChange}
+            required
+            className="border border-gray-300 rounded-md px-3 py-2 w-full"
+          />
         </div>
-
         <div>
           <label htmlFor="gender" className="block text-gray-700 text-sm font-bold mb-2">Gender:</label>
-          <select id="gender" required className="border border-gray-300 rounded-md px-3 py-2 w-full">
-            <option selected hidden disabled value="">Select Gender</option>
+          <select
+            id="gender"
+            name="gender"
+            value={formData.gender}
+            onChange={handleChange}
+            required
+            className="border border-gray-300 rounded-md px-3 py-2 w-full"
+          >
+            <option disabled hidden value="">Select Gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="other">Other</option>
@@ -23,16 +89,41 @@ const BloodRequest = () => {
         </div>
         <div>
           <label htmlFor="phone-number" className="block text-gray-700 text-sm font-bold mb-2">Phone Number:</label>
-          <input type="tel" id="phone-number" placeholder='Enter Your Phone/Contact Nu' required className="border border-gray-300 rounded-md px-3 py-2 w-full" />
+          <input
+            type="tel"
+            id="phone-number"
+            name="phoneNumber"
+            value={formData.phoneNumber}
+            onChange={handleChange}
+            placeholder='Enter Your Phone/Contact Nu'
+            required
+            className="border border-gray-300 rounded-md px-3 py-2 w-full"
+          />
         </div>
         <div>
           <label htmlFor="email-address" className="block text-gray-700 text-sm font-bold mb-2">Full Address:</label>
-          <input type="email" id="email-address" required placeholder="Enter Your Full Address" className="border border-gray-300 rounded-md px-3 py-2 w-full" />
+          <input
+            type="text"
+            id="email-address"
+            name="fullAddress"
+            value={formData.fullAddress}
+            onChange={handleChange}
+            placeholder="Enter Your Full Address"
+            required
+            className="border border-gray-300 rounded-md px-3 py-2 w-full"
+          />
         </div>
         <div>
           <label htmlFor="blood-type" className="block text-gray-700 text-sm font-bold mb-2">Blood Type:</label>
-          <select id="blood-type" required className="border border-gray-300 rounded-md px-3 py-2 w-full">
-            <option disabled hidden selected value="">Select Blood Type</option>
+          <select
+            id="blood-type"
+            name="bloodType"
+            value={formData.bloodType}
+            onChange={handleChange}
+            required
+            className="border border-gray-300 rounded-md px-3 py-2 w-full"
+          >
+            <option disabled hidden value="">Select Blood Type</option>
             <option value="A+">A+</option>
             <option value="A-">A-</option>
             <option value="B+">B+</option>
@@ -45,48 +136,78 @@ const BloodRequest = () => {
         </div>
         <div>
           <label htmlFor="blood-packet" className="block text-gray-700 text-sm font-bold mb-2">Blood Packet Quantity:</label>
-          <input type="number" id="blood-packet" required placeholder='Enter Blood Packet Quanity' className="border border-gray-300 rounded-md px-3 py-2 w-full" />
+          <input
+            type="number"
+            id="blood-packet"
+            name="bloodPacketQuantity"
+            value={formData.bloodPacketQuantity}
+            onChange={handleChange}
+            placeholder='Enter Blood Packet Quantity'
+            required
+            className="border border-gray-300 rounded-md px-3 py-2 w-full"
+          />
         </div>
         <div>
           <label htmlFor="critical-need" className="block text-gray-700 text-sm font-bold mb-2">Select Your Blood Need:</label>
-          <select id="critical-need" required className="border border-gray-300 rounded-md px-3 py-2 w-full">
-            <option value="" disabled hidden selected>Select Blood Need</option>
-            <option value="critical">Critical</option>
+          <select
+            id="critical-need"
+            name="criticalNeed"
+            value={formData.criticalNeed}
+            onChange={handleChange}
+            required
+            className="border border-gray-300 rounded-md px-3 py-2 w-full"
+          >
+            <option disabled hidden value="">Select Blood Need</option>
+            <option value="ritical">Critical</option>
             <option value="medium">Medium</option>
             <option value="low">Low</option>
           </select>
         </div>
-
         <div>
           <label className="block text-gray-700 text-sm font-bold mb-2">Date of Blood Request:</label>
           <input
             type="date"
-            name=""
+            name="dateOfBloodRequest"
+            value={formData.dateOfBloodRequest}
+            onChange={handleChange}
             required
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
-
-
         <div>
           <label htmlFor="request-duration-time" className="block text-gray-700 text-sm font-bold mb-2block text-gray-700 text-sm font-bold mb-2">Request Duration (Time):</label>
-          <input type="time" id="request-duration-time" required className="border border-gray-300 rounded-md px-3 py-2 w-full" />
+          <input
+            type="time"
+            id="request-duration-time"
+            name="requestDurationTime"
+            value={formData.requestDurationTime}
+            onChange={handleChange}
+            required
+            className="border border-gray-300 rounded-md px-3 py-2 w-full"
+          />
         </div>
         <div>
           <label htmlFor="hospitalized" className="block text-gray-700 text-sm font-bold mb-2">Hospitalized:</label>
-          <select id="hospitalized" required className="border border-gray-300 rounded-md px-3 py-2 w-full">
-            <option value="" disabled hidden selected>Select Hospitalization Status</option>
+          <select
+            id="hospitalized"
+            name="hospitalized"
+            value={formData.hospitalized}
+            onChange={handleChange}
+            required
+            className="border border-gray-300 rounded-md px-3 py-2 w-full"
+          >
+            <option disabled hidden value="">Select Hospitalization Status</option>
             <option value="yes">Yes</option>
             <option value="no">No</option>
           </select>
         </div>
-
         <div>
           <button type="submit" className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
         </div>
+
       </form>
     </div>
   );
 }
 
-export default BloodRequest;
+export default BloodRequest; 
