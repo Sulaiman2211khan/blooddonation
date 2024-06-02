@@ -210,4 +210,8 @@ const BloodRequest = () => {
   );
 }
 
+<<<<<<< HEAD
 export default BloodRequest;
+=======
+export default BloodRequest; 
+>>>>>>> ec4d573eed1908e116daf01ff59921560825a73e
