@@ -97,6 +97,7 @@ const Signup = () => {
               type="text"
               name="name"
               placeholder="Full name"
+              required
               value={formData.name}
               onChange={handleChange}
             />
@@ -111,6 +112,7 @@ const Signup = () => {
               className="pl-2 outline-none border-none"
               type="email"
               name="email"
+              required
               placeholder="Email Address"
               value={formData.email}
               onChange={handleChange}
@@ -128,12 +130,12 @@ const Signup = () => {
               type="password"
               name="password"
               placeholder="Password"
+              required
               value={formData.password}
               onChange={handleChange}
             />
           </div>
-          <button type="submit" className="block w-full bg-red-600 hover:bg-red-500 mt-7 py-2  text-white font-semibold mb-2">Login</button>
-          <span className="text-sm ml-2 hover:text-blue-500 cursor-pointer">Forgot Password ?</span>
+          <button type="submit" className="block w-full bg-red-600 hover:bg-red-500 mt-7 py-2  text-white font-semibold mb-2">Sign Up</button>
         </form>
       </div>
       <Backdrop

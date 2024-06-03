@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { createRoot } from 'react-dom/client';
 import { PersistGate } from 'redux-persist/integration/react';
 import store from './Components/redux/store.js'; // Assuming you have a Redux store set up
 import App from './App.jsx';
@@ -17,7 +18,8 @@ import BloodRequest from './Components/BloodRequest.jsx';
 import Signup from './Components/Signup.jsx'; 
 import { persistStore } from 'redux-persist';
 let persistor = persistStore(store);
-ReactDOM.createRoot(document.getElementById('root')).render(
+
+createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <Router>

@@ -11,8 +11,6 @@ import Alert from '@mui/material/Alert';
 const Login = () => {
   const [open, setOpen] = React.useState(false);
 
- 
-
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -48,7 +46,7 @@ const Login = () => {
         setLoading(false);
       }
     } else {
-      console.log('Fill in the required fields');
+      alert('Fill in the required fields');
     }
   };
 
@@ -76,6 +74,7 @@ const Login = () => {
                   <div className="mt-2">
                     <input
                       value={useremail}
+                      required
                       onChange={(e) => { setuseremail(e.target.value) }}
                       className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="email"
@@ -93,6 +92,7 @@ const Login = () => {
                   <div className="mt-2">
                     <input
                       value={password}
+                      required
                       onChange={(e) => { setpassword(e.target.value) }}
                       className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="password"
