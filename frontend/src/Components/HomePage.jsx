@@ -24,7 +24,7 @@ function HomePage() {
                 </div>
             </div>
 
-            <div className="flex justify-center mb-8 ">
+            <div className="flex justify-center mb-8 mt-8">
               <iframe
                 width="900"
                 height="400"

@@ -4,7 +4,22 @@ import { useNavigate } from 'react-router-dom';
 import { getUser } from './redux/userSlice.js';
 import { useDispatch } from 'react-redux';
 
+import Button from '@mui/material/Button';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
+
 const Login = () => {
+  const [open, setOpen] = React.useState(false);
+
+ 
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [useremail, setuseremail] = useState('');
@@ -22,11 +37,13 @@ const Login = () => {
         });
         console.log(res.data)
         dispatch(getUser(res?.data?.user));
+
         if (res.data) {
           navigate(-1);
         }
       } catch (error) {
         console.error('Error logging in:', error);
+        setOpen(true)
       } finally {
         setLoading(false);
       }
@@ -104,6 +121,16 @@ const Login = () => {
           />
         </div>
       </div>
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert
+          onClose={handleClose}
+          severity="error"
+          variant="filled"
+          sx={{ width: '100%' }}
+        >
+          Incorrect email or password
+        </Alert>
+      </Snackbar>
     </section>
   );
 }

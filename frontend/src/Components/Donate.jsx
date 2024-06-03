@@ -3,7 +3,11 @@ import 'leaflet/dist/leaflet.css';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios"
+import Button from '@mui/material/Button';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 
+import { SnackbarProvider, useSnackbar } from 'notistack';
 const statesAndCities = {
   Punjab: ["Lahore", "Faisalabad", "Rawalpindi", "Gujranwala", "Multan"],
   Sindh: ["Karachi", "Hyderabad", "Sukkur", "Larkana", "Mirpur Khas"],
@@ -12,13 +16,22 @@ const statesAndCities = {
   Islamabad: ["Islamabad"],
 };
 
-const Donate = () => {
-  const navigate = useNavigate();
 
-  const handleregister = (e) => {
-    e.preventDefault();
-    navigate("/login");
+const Donate = () => {
+
+  const navigate = useNavigate();
+  const [open, setOpen] = React.useState(false);
+ 
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
   };
+
+  
   
   const user = useSelector(store => store.user);
 
@@ -49,6 +62,7 @@ const Donate = () => {
     });
   };
 
+
   useEffect(() => {
     if (formData.state) {
       setCities(statesAndCities[formData.state] || []);
@@ -62,9 +76,13 @@ const Donate = () => {
     e.preventDefault();
     setSubmitted(true);
     console.log(formData);
-    const response = await axios.post('http://localhost:3000/api/donate/donar', {formData,user});
+    const response = await axios.post('http://localhost:3000/api/donate/donar',{ ...formData, user });
     console.log(response.data); // Assuming the backend responds with a message
     if (response.data.success) {
+      
+      setOpen(true);
+    
+    
       setFormData({
         gender: '',
         dob: '',
@@ -87,7 +105,7 @@ const Donate = () => {
 
   return (
     <>
-     { user ? <div className="max-w-md mx-auto bg-white  p-6 mt-10 mb-2 shadow-lg shadow-cyan-500/100 ">
+     { user.user!==null ? <div className="max-w-md mx-auto bg-white  p-6 mt-10 mb-2 shadow-lg shadow-cyan-500/100 ">
         <h2 className="text-2xl font-bold mb-6 text-center">Donor Registration</h2>
         <p className="text-green-600 mb-4">All fields must be filled.</p>
         <form onSubmit={handleSubmit} method="POST">
@@ -242,11 +260,21 @@ const Donate = () => {
             </button>
           </div>
         </form>
+        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert
+          onClose={handleClose}
+          severity="success"
+          variant="filled"
+          sx={{ width: '100%' }}
+        >
+          Data Submitted Successfully
+        </Alert>
+      </Snackbar>
 
-      </div> : (<div>
+      </div> : <div>
         Please Register your self
-        <button className="border rounded-lg bg-gray-500 px-4 py-3" onClick={handleregister}>Register</button>
-      </div>)
+        <button className="border rounded-lg bg-gray-500 px-4 py-3" >Register</button>
+      </div>
       }
     </>
   )
