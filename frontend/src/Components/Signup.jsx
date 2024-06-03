@@ -1,7 +1,28 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUser } from './redux/userSlice';
+import { useNavigate } from 'react-router-dom';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+import Button from '@mui/material/Button';
 
 const Signup = () => {
+ const dispatch=useDispatch();
+ const navigate = useNavigate();
+
+ const [open, setOpen] = React.useState(false);
+ 
+
+ const handleClose = (event, reason) => {
+   if (reason === 'clickaway') {
+     return;
+   }
+
+   setOpen(false);
+ };
+
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -23,11 +44,24 @@ const Signup = () => {
         setError('Please fill in all fields.');
         return;
       }
-
+      setOpen(true);
+    
       // Send form data to the backend
       const response = await axios.post('http://localhost:3000/api/user/register', formData);
-      console.log(response.data); // Assuming the backend responds with a message
+      console.log(response.data.success); // Assuming the backend responds with a message
+      if(response.data.success==false){
+        setOpen(false);
+      }
 	  if(response.data.success){
+      const res = await axios.post('http://localhost:3000/api/user/login', {
+        email: formData.email,
+        password: formData.password
+      });
+      dispatch(getUser(res?.data?.user));
+      if (res.data) {
+        setOpen(false);
+        navigate('/');
+      }
 		setFormData({
         name: '',
         email: '',
@@ -37,6 +71,8 @@ const Signup = () => {
 	  }
     } catch (error) {
       console.error('Error:', error);
+      alert(error.response.data.message)
+      setOpen(false)
     }
   };
 
@@ -100,6 +136,13 @@ const Signup = () => {
           <span className="text-sm ml-2 hover:text-blue-500 cursor-pointer">Forgot Password ?</span>
         </form>
       </div>
+      <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+      
     </div>
   );
 }

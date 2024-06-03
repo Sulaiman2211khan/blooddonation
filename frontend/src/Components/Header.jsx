@@ -1,6 +1,9 @@
 import React from 'react';
 import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
 import { Link,useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
+import { logout } from './redux/userSlice';
 
 
 const menuItems = [
@@ -14,6 +17,22 @@ const menuItems = [
 ];
 
 export default function ExampleNavbarThree() {
+  const user = useSelector(store => store.user);
+  const dispatch = useDispatch();
+  
+  const handlelogout= async(e)=>{
+       e.preventDefault();
+       try {
+          const res= await axios.get("http://localhost:3000/api/user/logout");
+           console.log(res)
+           if(res){
+            dispatch(logout())
+           }
+       } catch (error) {
+        console.log(error)
+       }
+  }
+  console.log(user.user)
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
     const location = useLocation();
   const toggleMenu = () => {
@@ -39,14 +58,21 @@ export default function ExampleNavbarThree() {
               to="/signup"
               className="rounded-md bg-transparent px-3 py-2 text-sm font-semibold text-black hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
             >
-              Sign Up
+               {user.user ?"":"Sign Up"}
             </Link>
-            <Link
+            {user.user==null?<Link
               to="/login"
               className="rounded-md px-3 py-2 text-sm font-semibold text-black  hover:bg-black/10 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+            
             >
-              Log In
-            </Link>
+               {"Login"}
+            </Link>:<button
+             
+              className="rounded-md px-3 py-2 text-sm font-semibold text-black  hover:bg-black/10 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+             onClick={handlelogout}
+            >
+               {"Logout"}
+            </button>}
           </div>
         </div>
       </div>
@@ -117,20 +143,27 @@ export default function ExampleNavbarThree() {
                       ))}
                     </nav>
                   </div>
-                  <div className="mt-2 space-y-2">
-                    <Link
-                      to="/signup"
-                      className="rounded-md bg-transparent px-3 py-2 text-sm font-semibold text-black hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                    >
-                      Sign Up
-                    </Link>
-                    <Link
-                      to="/login"
-                      className="w-full rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                    >
-                      Log In
-                    </Link>
-                  </div>
+                  <div className="hidden text-white space-x-2 lg:block">
+            <Link
+              to="/signup"
+              className="rounded-md bg-transparent px-3 py-2 text-sm font-semibold text-black hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+            >
+               {!user ?"":"Sign Up"}
+            </Link>
+            {user==null?<Link
+              to="/login"
+              className="rounded-md px-3 py-2 text-sm font-semibold text-black  hover:bg-black/10 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+            
+            >
+               {"Login"}
+            </Link>:<button
+             
+              className="rounded-md px-3 py-2 text-sm font-semibold text-black  hover:bg-black/10 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+             onClick={handlelogout}
+            >
+               {"Logout"}
+            </button>}
+          </div>
                 </div>
               </div>
             </div>

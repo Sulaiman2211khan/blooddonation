@@ -1,4 +1,3 @@
-// recipientController.js
 import { Recipient } from "../models/recipientSchema.js";
 
 export const postRecipient = async (req, res) => {
@@ -44,3 +43,4 @@ export const postRecipient = async (req, res) => {
         res.status(400).json({ message: error.message, success: false });
     }
 };
+

@@ -1,16 +1,11 @@
 import { Donar } from "../models/donarSchema.js";
-import bcryptjs from "bcryptjs";
-import jwt from "jsonwebtoken";
 
 export const postDonate = async (req, res) => {
+    console.log(req.body)
     try {
-        const {
-            formData,
-            user
-        } = req.body;
-      
         // Destructuring formData
         const {
+            user,
             gender,
             dob,
             bloodGroup,
@@ -21,16 +16,16 @@ export const postDonate = async (req, res) => {
             state,
             medicalIllness,
             donationDate
-        } = formData;
+        } = req.body;
 
         // Parse date strings into Date objects
         const parsedDob = new Date(dob);
         const parsedDonationDate = new Date(donationDate);
 
-      
+        console.log(user.user._id)
         // Create a new Donar instance
         const newDonar = new Donar({
-            user: user.user._id, // Using only user._id
+            user: user.user._id, 
             gender,
             dob: parsedDob,
             bloodGroup,
@@ -42,6 +37,7 @@ export const postDonate = async (req, res) => {
             medicalIllness,
             donationDate: parsedDonationDate
         });
+
 
         // Save the new Donar instance
         const savedDonar = await newDonar.save();

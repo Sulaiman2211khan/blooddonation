@@ -2,12 +2,12 @@ import mongoose from "mongoose";
 
 const donarSchema = new mongoose.Schema({
     user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        type: String,
         required: true
     },
     gender: {
         type: String,
+        enum: ['male', 'female', 'other'],
         required: true
     },
     dob: {
@@ -16,10 +16,12 @@ const donarSchema = new mongoose.Schema({
     },
     bloodGroup: {
         type: String,
+        enum: ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'],
         required: true
     },
     lastDonation: {
         type: String,
+        enum: ['not_donated_ever', 'less_than_3_months', '3_to_6_months', 'more_than_6_months'],
         required: true
     },
     address: {
@@ -40,7 +42,7 @@ const donarSchema = new mongoose.Schema({
     },
     medicalIllness: {
         type: String,
-        required: false // Assuming this is optional
+        required: true
     },
     donationDate: {
         type: Date,
@@ -48,4 +50,4 @@ const donarSchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
-export const Donar = mongoose.model("Donar", donarSchema);
+export const Donar = mongoose.model('Donar', donarSchema);

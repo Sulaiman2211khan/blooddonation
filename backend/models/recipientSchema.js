@@ -1,4 +1,3 @@
-// recipientSchema.js
 import mongoose from "mongoose";
 
 const recipientSchema = new mongoose.Schema({
