@@ -42,7 +42,7 @@ const donarSchema = new mongoose.Schema({
     },
     medicalIllness: {
         type: String,
-        required: true
+        required: true  
     },
     donationDate: {
         type: Date,
